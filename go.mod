@@ -1,3 +1,3 @@
-module github.com/rhabichl/application_gateway_whitelist
+module github.com/rhabichl/applicationgatewaywhitelist
 
 go 1.21.3

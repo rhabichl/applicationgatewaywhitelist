@@ -1,4 +1,4 @@
-package application_gateway_whitelist
+package applicationgatewaywhitelist
 
 import (
 	"context"

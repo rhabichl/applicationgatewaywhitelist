@@ -1,4 +1,4 @@
-package application_gateway_whitelist_test
+package applicationgatewaywhitelist_test
 
 import (
 	"context"
@@ -7,15 +7,15 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/rhabichl/application_gateway_whitelist"
+	"github.com/rhabichl/applicationgatewaywhitelist"
 )
 
 func TestIpv4EmptyAllowIPlist(t *testing.T) {
-	cfg := application_gateway_whitelist.CreateConfig()
+	cfg := applicationgatewaywhitelist.CreateConfig()
 	ctx := context.Background()
 	next := http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {})
 
-	_, err := application_gateway_whitelist.New(ctx, next, cfg, "application_gateway_whitelist")
+	_, err := applicationgatewaywhitelist.New(ctx, next, cfg, "application_gateway_whitelist")
 	if err == nil {
 		t.Fatal("Error is nil but the AllowedIp List must be empty")
 	}
@@ -43,7 +43,7 @@ func TestIpv4XForwardedFor(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.Name, func(r *testing.T) {
-			cfg := application_gateway_whitelist.CreateConfig()
+			cfg := applicationgatewaywhitelist.CreateConfig()
 			cfg.AllowedIP = tc.AllowedIps
 			ctx := context.Background()
 
@@ -51,7 +51,7 @@ func TestIpv4XForwardedFor(t *testing.T) {
 				rw.WriteHeader(200)
 			})
 
-			handler, err := application_gateway_whitelist.New(ctx, next, cfg, "application_gateway_whitelist")
+			handler, err := applicationgatewaywhitelist.New(ctx, next, cfg, "application_gateway_whitelist")
 			if err != nil {
 				r.Fatal(err)
 			}
