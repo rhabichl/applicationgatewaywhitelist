@@ -1,0 +1,11 @@
+displayName: Application Gateway AllowIP
+type: middleware
+
+import: github.com/rhabichl/Application-Gateway-AllowIP
+
+summary: 'Azure Application Gateway appends Port to the X-Forwarded-For header IP-address, this plugin sanatizes this and blocks the request based on the AllowedIP list.'
+
+testData:
+  AllowedIP:
+    - "192.168.0.1"
+    - "192.168.0.2"
